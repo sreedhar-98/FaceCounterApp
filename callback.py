@@ -16,7 +16,6 @@ def callback(frame,detector,show_metrics):
     bboxes, scores = detector.inference(frame)
     frame = utils.draw_boxes(frame, bboxes)
     end_time = time.perf_counter()
-    n_frames += 1
     fps = 1.0 / (end_time - start_time)
     fps_cum += fps
     fps_avg = fps_cum / n_frames
