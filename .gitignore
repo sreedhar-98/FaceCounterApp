@@ -50,6 +50,7 @@ coverage.xml
 *.cover
 *.py,cover
 .hypothesis/
+.streamlit
 .pytest_cache/
 cover/
 
