@@ -7,14 +7,12 @@ from twilio.rest import Client
 
 @st.cache_resource()
 def get_detector():
-    print("Detector created")
     return FaceDetector(model='model/public/ultra-lightweight-face-detection-rfb-320/FP32/ultra-lightweight-face-detection-rfb-320.xml',
                             confidence_thr=0.8,
                             overlap_thr=0.3)
 
 @st.cache_data(ttl=86400)
 def get_twilio_token():
-    print("Twilio accessed")
     account_sid=st.secrets["sid"]
     auth_token=st.secrets["token"]
     client=Client(account_sid,auth_token)
@@ -24,7 +22,6 @@ def get_twilio_token():
 
 token=get_twilio_token()
 
-print("User called")
 
 
 st.title("Person Counter App")
