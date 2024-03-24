@@ -3,19 +3,18 @@ from streamlit_webrtc import webrtc_streamer
 from callback import callback
 from src.face_detector import FaceDetector
 from twilio.rest import Client
-import logging
 
 
 @st.cache_resource()
 def get_detector():
-    logging.info("Detector Created")
+    print("Detector created")
     return FaceDetector(model='model/public/ultra-lightweight-face-detection-rfb-320/FP32/ultra-lightweight-face-detection-rfb-320.xml',
                             confidence_thr=0.8,
                             overlap_thr=0.3)
 
 @st.cache_data(ttl=86400)
 def get_twilio_token():
-    logging.info("Twilio Details accesed")
+    print("Twilio accessed")
     account_sid=st.secrets["sid"]
     auth_token=st.secrets["token"]
     client=Client(account_sid,auth_token)
@@ -24,7 +23,9 @@ def get_twilio_token():
 
 
 token=get_twilio_token()
-logging.info("User called")
+
+print("User called")
+
 
 st.title("Person Counter App")
 
